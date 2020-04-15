@@ -1,0 +1,17 @@
+# cat /etc/systemd/system/glances.service
+
+[Unit]
+Description=Glances export service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=glances
+Group=glances
+ExecStart=/usr/local/bin/glances -q --export prometheus
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+SyslogIdentifier=glances
+
+[Install]
+WantedBy=multi-user.target
