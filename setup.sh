@@ -6,7 +6,7 @@ LABELS=src:glances
 
 groupadd --system glances
 useradd -s /sbin/nologin -r -g glances glances
-mkdir -p /home/glances
+mkdir -p /home/glances/.config/glances
 cp glances.service /etc/systemd/system/glances.service
 cp glances.conf /home/glances/.config/glances/glances.conf
 echo 'host='$HOST >> /home/glances/.config/glances/glances.conf
